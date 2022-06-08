@@ -20,7 +20,7 @@ public class RouterConfig {
 @Bean
 public RouterFunction<ServerResponse> routes(TypeProductHandler handler) {
     return RouterFunctions
-            .route(GET("/api/TypeProduct/listtp"), handler::list);
+            .route(GET("/api/TypeProduct"), handler::list);
     }
 
 
