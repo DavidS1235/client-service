@@ -4,9 +4,11 @@ import com.ds.clientservice.business.service.PersonService;
 import com.ds.clientservice.document.Person;
 import com.ds.clientservice.repository.PersonRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Service
 public class PersonServiceImpl implements PersonService {
     @Autowired
     private PersonRespository repository;

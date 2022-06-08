@@ -1,0 +1,20 @@
+server:
+  port: 8009
+spring:
+  data:
+    mongodb:
+      database: db_products
+      port: 27017
+      host: localhost
+      username: root
+logging:
+  config:
+    classpath: logback-test.xml
+
+#config-server conection
+#spring:
+#  application:
+#    name: product-service
+#  cloud:
+#    config:
+#      uri: http://localhost:8081

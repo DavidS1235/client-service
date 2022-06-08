@@ -4,9 +4,11 @@ import com.ds.clientservice.business.service.TypeClientService;
 import com.ds.clientservice.document.TypeClient;
 import com.ds.clientservice.repository.TypeClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Service
 public class TypeClientServiceImpl implements TypeClientService {
     @Autowired
     private TypeClientRepository repository;
