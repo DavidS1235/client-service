@@ -3,6 +3,7 @@ package com.ds.clientservice.controller;
 
 import com.ds.clientservice.business.service.ClientService;
 import com.ds.clientservice.document.Client;
+import com.ds.clientservice.document.Product;
 import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -65,4 +66,13 @@ public class ClientController {
                 })
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
+
+//    @PostMapping("/createprd")
+//    public Mono<ResponseEntity<Product>> create(@RequestBody Product p) {
+//        return productService.saveProduct(p)
+//                .map(prd -> ResponseEntity.created(URI.create("/api/product/".concat(prd.getId())))
+//                        .body(prd)
+//                );
+//    }
+
 }
