@@ -1,4 +1,4 @@
-package com.ds.clientservice.service;
+package com.ds.clientservice.business.service;
 
 import com.ds.clientservice.document.Client;
 import reactor.core.publisher.Flux;
