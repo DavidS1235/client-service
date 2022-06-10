@@ -1,11 +1,7 @@
 package com.ds.clientservice.handler;
 
-import com.ds.clientservice.business.service.ProductService;
 import com.ds.clientservice.business.service.TypeProductService;
-import com.ds.clientservice.document.Product;
 import com.ds.clientservice.document.TypeProduct;
-import java.net.URI;
-import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -23,7 +19,6 @@ public class TypeProductHandler {
         return ServerResponse
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                // findAll() retorna un Flux<Producto>
                 .body(service.findAll(), TypeProduct.class);
     }
 }
