@@ -10,8 +10,10 @@ public class SubTypeProduct {
     private String id;
     private String code;
     private String name;
-
     private Date date;
-
+    private Number limitMount;
+    private Number limitDay;
+    private Number limitCredit;
+    private Boolean commission;
     private TypeProduct typeProduct;
 }
