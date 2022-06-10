@@ -11,6 +11,7 @@ public class Product {
     private String id;
     private String idBank;
     private String tpeCrrency;
+    private Number numRemainder;
     private Date date;
     private SubTypeProduct subTypeProduct;
     private String idClient;
