@@ -3,6 +3,7 @@ package com.ds.clientservice.business.Impl;
 import com.ds.clientservice.business.service.ProductService;
 import com.ds.clientservice.document.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -12,6 +13,7 @@ import reactor.core.publisher.Mono;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
+    @Qualifier("product")
     private WebClient webClient;
     @Override
     public Mono<Product> saveProduct(Product product) {

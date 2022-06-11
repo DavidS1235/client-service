@@ -17,7 +17,7 @@ public class ProductHandler {
     @Autowired
     private ProductService service;
 
-    public Mono<ServerResponse> create(ServerRequest request) {
+    public Mono<ServerResponse> createProduct(ServerRequest request) {
         Mono<Product> product = request.bodyToMono(Product.class);
 
         return product
@@ -25,13 +25,11 @@ public class ProductHandler {
                     if(p.getDate() == null)
                         p.setDate(new Date());
                     return service.saveProduct(p);
-                    // después de guardar el flujo tiene el producto con el 'id'
 
                 })
                 .flatMap( p -> ServerResponse
                         .created(URI.create("/api/product/".concat(p.getId())))
                         .contentType(MediaType.APPLICATION_JSON)
-                        // al cuerpo del response se le pasa el objeto común
                         .syncBody(p)
                 );
     }
