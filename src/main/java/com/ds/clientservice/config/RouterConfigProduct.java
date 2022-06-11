@@ -15,7 +15,11 @@ public class RouterConfigProduct {
 @Bean
 public RouterFunction<ServerResponse> routes(ProductHandler handler) {
     return RouterFunctions
-            .route(POST("/api/product"), handler::createProduct);
+            .route(GET("/api/product"), handler::list)
+            .andRoute(GET("/api/product/{id}"), handler::find)
+            .andRoute(POST("/api/product"), handler::createProduct)
+            .andRoute(PUT("/api/product/{id}"), handler::update)
+            .andRoute(DELETE("/api/product/{id}"), handler::delete);
     }
 
 

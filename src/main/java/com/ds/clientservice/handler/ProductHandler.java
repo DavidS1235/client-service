@@ -20,6 +20,26 @@ public class ProductHandler{
     @Autowired
     private ProductService service;
 
+
+    public Mono<ServerResponse> list(ServerRequest request) {
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(service.findAll(), Product.class);
+    }
+
+    public Mono<ServerResponse> find(ServerRequest request) {
+        String id = request.pathVariable("id");
+        return service.findById(id)
+                .flatMap( p -> ServerResponse
+                        .ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .syncBody(p)
+                )
+                .switchIfEmpty(ServerResponse.notFound().build())
+                ;
+    }
+
     public Mono<ServerResponse> createProduct(ServerRequest request){
         Mono<Product> product = request.bodyToMono(Product.class);
 
@@ -28,24 +48,46 @@ public class ProductHandler{
                     if(p.getIdBank() == null){
                         log.error("Missing Bank Id");
                         throw new RuntimeException("Missing Bank Id");
-                    } else if (p.getTpeCrrency().isEmpty()) {
+                    }
+                    if (p.getTpeCrrency().isEmpty()) {
                         log.error("Missing Currency");
                         throw new RuntimeException("Missing Currency");
-                    } else if(p.getDate() == null){
+                    }
+                    if(p.getDate() == null){
                         p.setDate(new Date());
-                    } else if(p.getIdClient() == null) {
+                    }
+                    if(p.getIdClient() == null) {
                         log.error("Missing Client id");
                         throw new RuntimeException("Missing Client id");
                     }
-                    log.info("Product: "+ p.getId() +"created");
-                    return service.saveProduct(p);
 
+                    return service.saveProduct(p);
 
                 })
                 .flatMap( p -> ServerResponse
                         .created(URI.create("/api/product/".concat(p.getId())))
                         .contentType(MediaType.APPLICATION_JSON)
                         .syncBody(p)
+
                 );
+    }
+    public Mono<ServerResponse> update(ServerRequest request) {
+
+        Mono<Product> p = request.bodyToMono(Product.class);
+        String id = request.pathVariable("id");
+
+        return p
+                .flatMap( pr -> ServerResponse
+                        .created(URI.create("/api/product/".concat(id)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(service.update(pr,  id), Product.class)
+                );
+    }
+    public Mono<ServerResponse> delete(ServerRequest request) {
+
+        String id = request.pathVariable("id");
+
+        return service.delete(id)
+                .then(ServerResponse.noContent().build());
     }
 }
