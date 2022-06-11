@@ -20,6 +20,15 @@ public class Client {
     private String name;
     private Person person;
     private TypeClient typeClient;
+    //Personal
+    private boolean ctaAhorro;
+    private boolean plzFijo;
+    //Personal - Empresarial
+    private Integer ctaCorriente; // P: 1 E: n
+    private Integer credPersonal; // P: 1
+    private Integer credEmpresarial; // E: n
+    private Boolean tcPersonal;
+    private Boolean tcEmpresarial;
     @Transient
     private Product product;
 
