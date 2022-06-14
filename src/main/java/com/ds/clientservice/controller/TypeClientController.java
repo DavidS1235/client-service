@@ -15,7 +15,7 @@ public class TypeClientController {
     @Autowired
     private TypeClientService service;
 
-    @GetMapping("/listtypeclient")
+    @GetMapping("")
     public Mono<ResponseEntity<Flux<TypeClient>>> findAll(){
         return Mono.just(ResponseEntity.ok()
                 .body(service.findAll()));
@@ -29,7 +29,7 @@ public class TypeClientController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/create")
+    @PostMapping("")
     public Mono<ResponseEntity<TypeClient>> create(@RequestBody TypeClient tc) {
         return service.save(tc)
                 .map(t -> ResponseEntity.created(URI.create("/api/typeclient/".concat(t.getId())))
