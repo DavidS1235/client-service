@@ -21,11 +21,11 @@ public class Client {
     private Person person;
     private TypeClient typeClient;
     //Personal
-    private boolean ctaAhorro;
-    private boolean plzFijo;
+    private Boolean ctaAhorro;
+    private Boolean plzFijo;
+    private Boolean credPersonal;
     //Personal - Empresarial
     private Integer ctaCorriente; // P: 1 E: n
-    private Integer credPersonal; // P: 1
     private Integer credEmpresarial; // E: n
     private Boolean tcPersonal;
     private Boolean tcEmpresarial;

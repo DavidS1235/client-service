@@ -3,7 +3,6 @@ package com.ds.clientservice.controller;
 
 import com.ds.clientservice.business.service.ClientService;
 import com.ds.clientservice.document.Client;
-import com.ds.clientservice.document.Product;
 import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

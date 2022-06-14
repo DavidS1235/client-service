@@ -1,6 +1,8 @@
 package com.ds.clientservice.document;
 
 import java.util.Date;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,11 +11,13 @@ import lombok.Setter;
 public class Product {
 
     private String id;
+    @NotNull
     private String idBank;
+    @NotEmpty
     private String tpeCrrency;
     private Number numRemainder;
     private Date date;
     private SubTypeProduct subTypeProduct;
-    private String idClient;
+    private Client client;
 
 }
