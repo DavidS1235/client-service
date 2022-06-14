@@ -42,7 +42,6 @@ public class ClientController {
                   cl.setCredEmpresarial(0);
                   cl.setTcPersonal(false);
                   cl.setTcEmpresarial(false);
-                  cl.setProduct(c.getProduct());
                   return service.save(cl);
                 })
                 .map(cl -> ResponseEntity.created(URI.create("/api/client/".concat(cl.getId())))
@@ -67,7 +66,6 @@ public class ClientController {
                     cl.setCredEmpresarial(c.getCredEmpresarial());
                     cl.setTcPersonal(c.getTcPersonal());
                     cl.setTcEmpresarial(c.getTcEmpresarial());
-                    cl.setProduct(c.getProduct());
                     return service.save(cl);
                 })
                 .map(cl -> ResponseEntity.created(URI.create("/api/client/".concat(cl.getId())))
