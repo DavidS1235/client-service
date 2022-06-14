@@ -29,7 +29,5 @@ public class Client {
     private Integer credEmpresarial; // E: n
     private Boolean tcPersonal;
     private Boolean tcEmpresarial;
-    @Transient
-    private Product product;
 
 }
