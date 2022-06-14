@@ -66,7 +66,7 @@ public class ProductHandler {
                 if (p.getDate() == null) {
                   p.setDate(new Date());
                 }
-                if (p.getClient().getTypeClient().equals(tp2)) {
+                if (p.getClient().getTypeClient().getName().equals(tp2)) {
                   log.error("Invalid client type");
                   try {
                     throw new Exception("Invalid client type");
@@ -114,7 +114,7 @@ public class ProductHandler {
                 if (p.getDate() == null) {
                   p.setDate(new Date());
                 }
-                if (p.getClient().getTypeClient().equals(tp1)) {
+                if (p.getClient().getTypeClient().getName().equals(tp1)) {
                   if (p.getClient().getCtaCorriente() == 1){
                     log.error("Max account number reached!");
                     try {
@@ -156,7 +156,7 @@ public class ProductHandler {
                 if (p.getDate() == null) {
                   p.setDate(new Date());
                 }
-                if (p.getClient().getTypeClient().equals(tp2)) {
+                if (p.getClient().getTypeClient().getName().equals(tp2)) {
                   log.error("Invalid client type");
                   try {
                     throw new Exception("Invalid client type");
@@ -205,7 +205,7 @@ public class ProductHandler {
                   if (p.getDate() == null) {
                     p.setDate(new Date());
                   }
-                  if (p.getClient().getTypeClient().equals(tp2)) {
+                  if (p.getClient().getTypeClient().getName().equals(tp2)) {
                     log.error("Invalid client type");
                     try {
                       throw new Exception("Invalid client type");
@@ -256,7 +256,7 @@ public class ProductHandler {
                 if (p.getDate() == null) {
                   p.setDate(new Date());
                 }
-                if (p.getClient().getTypeClient().equals(tp1)) {
+                if (p.getClient().getTypeClient().getName().equals(tp1)) {
                   log.error("Invalid client type");
                   try {
                     throw new Exception("Invalid client type");
@@ -307,7 +307,7 @@ public class ProductHandler {
                   }
 
                 }
-                if(p.getClient().getTypeClient().equals(tp1)){
+                if(p.getClient().getTypeClient().getName().equals(tp1)){
                   p.getClient().setTcPersonal(true);
                 }else
                   p.getClient().setTcEmpresarial(true);

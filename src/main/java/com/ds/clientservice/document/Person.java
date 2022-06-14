@@ -19,6 +19,6 @@ public class Person {
     private String name;
     private String paternal;
     private String maternal;
-    private Integer idTpePerson;
+    private Integer idTpePerson; // 1 = personal 2= empresarial
 
 }

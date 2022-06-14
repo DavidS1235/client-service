@@ -16,7 +16,7 @@ public class PersonController {
     @Autowired
     private PersonService service;
 
-    @GetMapping("/listperson")
+    @GetMapping("")
     public Mono<ResponseEntity<Flux<Person>>> findAll(){
         return Mono.just(ResponseEntity.ok()
                 .body(service.findAll()));
@@ -30,7 +30,7 @@ public class PersonController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/create")
+    @PostMapping("")
     public Mono<ResponseEntity<Person>> create(@RequestBody Person p) {
         return service.save(p)
                 .map(ps -> ResponseEntity.created(URI.create("/api/person/".concat(ps.getId())))

@@ -8,8 +8,12 @@
         </layout>
     </appender>
 
-    <logger name="ClientServiceApplication">
+<!--    <logger name="ClientServiceApplication">-->
+<!--        <appender-ref ref="CONSOLE"/>-->
+<!--    </logger>-->
+
+    <root name="ClientServiceApplication">
         <appender-ref ref="CONSOLE"/>
-    </logger>
+    </root>
 
 </Configuration>
