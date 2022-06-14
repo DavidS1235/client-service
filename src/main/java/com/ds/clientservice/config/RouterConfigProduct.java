@@ -17,7 +17,12 @@ public RouterFunction<ServerResponse> routes(ProductHandler handler) {
     return RouterFunctions
             .route(GET("/api/product"), handler::list)
             .andRoute(GET("/api/product/{id}"), handler::find)
-            .andRoute(POST("/api/product"), handler::createProduct)
+            .andRoute(POST("/api/product/ctaahorro"), handler::createCtaAhorro)
+            .andRoute(POST("/api/product/ctacorriente"), handler::createCtaCorriente)
+            .andRoute(POST("/api/product/pzofijo"), handler::createPzoFijo)
+            .andRoute(POST("/api/product/credpersonal"), handler::createCredPersonal)
+            .andRoute(POST("/api/product/credempresarial"), handler::createCredEmpresarial)
+            .andRoute(POST("/api/product/tc"), handler::createTC)
             .andRoute(PUT("/api/product/{id}"), handler::update)
             .andRoute(DELETE("/api/product/{id}"), handler::delete);
     }

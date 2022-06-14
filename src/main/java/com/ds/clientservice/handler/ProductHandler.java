@@ -49,7 +49,7 @@ public class ProductHandler {
                 ;
     }
 
-  public Mono<ServerResponse> createCtaAhorro(ServerRequest request) throws Exception{
+  public Mono<ServerResponse> createCtaAhorro(ServerRequest request){
     Mono<Product> product = request.bodyToMono(Product.class);
     return product
             .flatMap(p -> {
@@ -97,7 +97,7 @@ public class ProductHandler {
             });
   }
 
-  public Mono<ServerResponse> createCtaCorriente(ServerRequest request) throws Exception{
+  public Mono<ServerResponse> createCtaCorriente(ServerRequest request){
     Mono<Product> product = request.bodyToMono(Product.class);
     return product
             .flatMap(p -> {
@@ -139,7 +139,7 @@ public class ProductHandler {
             });
   }
 
-  public Mono<ServerResponse> createPzoFijo(ServerRequest request) throws Exception{
+  public Mono<ServerResponse> createPzoFijo(ServerRequest request){
     Mono<Product> product = request.bodyToMono(Product.class);
     return product
             .flatMap(p -> {
@@ -186,7 +186,7 @@ public class ProductHandler {
 
             });
   }
-    public Mono<ServerResponse> createCredPersonal(ServerRequest request) throws Exception{
+    public Mono<ServerResponse> createCredPersonal(ServerRequest request){
         Mono<Product> product = request.bodyToMono(Product.class);
 
 
