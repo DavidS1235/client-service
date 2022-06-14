@@ -74,12 +74,4 @@ public class ClientController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-//    @PostMapping("/createprd")
-//    public Mono<ResponseEntity<Product>> create(@RequestBody Product p) {
-//        return productService.saveProduct(p)
-//                .map(prd -> ResponseEntity.created(URI.create("/api/product/".concat(prd.getId())))
-//                        .body(prd)
-//                );
-//    }
-
 }
