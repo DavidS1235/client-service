@@ -34,9 +34,21 @@ public class ClientController {
     @PostMapping("")
     public Mono<ResponseEntity<Client>> create(@RequestBody Client c) {
         return service.save(c)
+                .flatMap(cl -> {
+                  cl.setCtaAhorro(false);
+                  cl.setPlzFijo(false);
+                  cl.setCredPersonal(false);
+                  cl.setCtaCorriente(0);
+                  cl.setCredEmpresarial(0);
+                  cl.setTcPersonal(false);
+                  cl.setTcEmpresarial(false);
+                  cl.setProduct(c.getProduct());
+                  return service.save(cl);
+                })
                 .map(cl -> ResponseEntity.created(URI.create("/api/client/".concat(cl.getId())))
                         .body(cl)
-                );
+                )
+                .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
