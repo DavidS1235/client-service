@@ -17,7 +17,7 @@ public class ClientController {
     @Autowired
     private ClientService service;
 
-    @GetMapping("/listclients")
+    @GetMapping("")
     public Mono<ResponseEntity<Flux<Client>>> findAll(){
         return Mono.just(ResponseEntity.ok()
                 .body(service.findAll()));
@@ -31,7 +31,7 @@ public class ClientController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/create")
+    @PostMapping("")
     public Mono<ResponseEntity<Client>> create(@RequestBody Client c) {
         return service.save(c)
                 .map(cl -> ResponseEntity.created(URI.create("/api/client/".concat(cl.getId())))
