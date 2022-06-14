@@ -48,6 +48,14 @@ public class ClientController {
                     cl.setName(c.getName());
                     cl.setPerson(c.getPerson());
                     cl.setTypeClient(c.getTypeClient());
+                    cl.setCtaAhorro(c.getCtaAhorro());
+                    cl.setPlzFijo(c.getPlzFijo());
+                    cl.setCredPersonal(c.getCredPersonal());
+                    cl.setCtaCorriente(c.getCtaCorriente());
+                    cl.setCredEmpresarial(c.getCredEmpresarial());
+                    cl.setTcPersonal(c.getTcPersonal());
+                    cl.setTcEmpresarial(c.getTcEmpresarial());
+                    cl.setProduct(c.getProduct());
                     return service.save(cl);
                 })
                 .map(cl -> ResponseEntity.created(URI.create("/api/client/".concat(cl.getId())))
