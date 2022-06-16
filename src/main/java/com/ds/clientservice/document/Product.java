@@ -17,9 +17,7 @@ public class Product {
     private String tpeCrrency;
     private Number numRemainder;
     private Date date;
-    @NotNull
     private SubTypeProduct subTypeProduct;
-    @NotNull
     private Client client;
 
 }
