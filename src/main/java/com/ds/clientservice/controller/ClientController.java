@@ -4,7 +4,6 @@ package com.ds.clientservice.controller;
 import com.ds.clientservice.business.service.ClientService;
 import com.ds.clientservice.document.Client;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +18,13 @@ public class ClientController {
     @Autowired
     private ClientService service;
 
-  @TimeLimiter(name = "client")
+    @CircuitBreaker(name = "client")
     @GetMapping("")
     public Mono<ResponseEntity<Flux<Client>>> findAll(){
         return Mono.just(ResponseEntity.ok()
                 .body(service.findAll()));
     }
-  @TimeLimiter(name = "client")
+    @CircuitBreaker(name = "client")
     @GetMapping("/{id}")
     public Mono<ResponseEntity<Client>> findById(@PathVariable String id) {
         return service.find(id)
@@ -34,7 +33,7 @@ public class ClientController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-  @TimeLimiter(name = "client")
+  @CircuitBreaker(name = "client")
     @PostMapping("")
     public Mono<ResponseEntity<Client>> create(@RequestBody Client c) {
         return service.save(c)
@@ -53,7 +52,7 @@ public class ClientController {
                 )
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
-  @TimeLimiter(name = "client")
+  @CircuitBreaker(name = "client")
     @PutMapping("/{id}")
     public Mono<ResponseEntity<Client>> update(@RequestBody Client c, @PathVariable String id){
         return service.find(id)
@@ -77,7 +76,7 @@ public class ClientController {
                 )
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
-  @TimeLimiter(name = "client")
+  @CircuitBreaker(name = "client")
     @DeleteMapping("/{id}")
     public Mono<ResponseEntity<Object>> delete(@PathVariable String id) {
         return service.find(id)
