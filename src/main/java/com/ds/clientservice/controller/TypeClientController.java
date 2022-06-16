@@ -16,13 +16,13 @@ import reactor.core.publisher.Mono;
 public class TypeClientController {
     @Autowired
     private TypeClientService service;
-  @TimeLimiter(name = "client")
+  @CircuitBreaker(name = "client")
     @GetMapping("")
     public Mono<ResponseEntity<Flux<TypeClient>>> findAll(){
         return Mono.just(ResponseEntity.ok()
                 .body(service.findAll()));
     }
-  @TimeLimiter(name = "client")
+  @CircuitBreaker(name = "client")
     @GetMapping("/{id}")
     public Mono<ResponseEntity<TypeClient>> findById(@PathVariable String id) {
         return service.find(id)
@@ -30,7 +30,7 @@ public class TypeClientController {
                         .body(p))
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
-  @TimeLimiter(name = "client")
+  @CircuitBreaker(name = "client")
     @PostMapping("")
     public Mono<ResponseEntity<TypeClient>> create(@RequestBody TypeClient tc) {
         return service.save(tc)
@@ -39,7 +39,7 @@ public class TypeClientController {
                 );
     }
 
-  @TimeLimiter(name = "client")
+  @CircuitBreaker(name = "client")
     @PutMapping("/{id}")
     public Mono<ResponseEntity<TypeClient>> update(@RequestBody TypeClient tc, @PathVariable String id){
         return service.find(id)
@@ -53,7 +53,7 @@ public class TypeClientController {
                 )
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
-  @TimeLimiter(name = "client")
+  @CircuitBreaker(name = "client")
     @DeleteMapping("/{id}")
     public Mono<ResponseEntity<Object>> delete(@PathVariable String id) {
         return service.find(id)
