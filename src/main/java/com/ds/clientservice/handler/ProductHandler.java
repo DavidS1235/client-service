@@ -74,7 +74,7 @@ public class ProductHandler {
                     throw new RuntimeException(e);
                   }
                 }
-                if (p.getClient().getCtaAhorro() == true) {
+                if (p.getClient().getCtaAhorro()) {
                   log.error("Max account number reached!");
                   try {
                     throw new Exception("Max account number reached!");
@@ -164,7 +164,7 @@ public class ProductHandler {
                     throw new RuntimeException(e);
                   }
                 }
-                if (p.getClient().getPlzFijo() == true) {
+                if (p.getClient().getPlzFijo()) {
                   log.error("Max account number reached!");
                   try {
                     throw new Exception("Max account number reached!");
@@ -213,7 +213,7 @@ public class ProductHandler {
                       throw new RuntimeException(e);
                     }
                   }
-                  if (p.getClient().getCredPersonal() == true) {
+                  if (p.getClient().getCredPersonal()) {
                     log.error("Max account number reached!");
                     try {
                       throw new Exception("Max account number reached!");
@@ -299,7 +299,7 @@ public class ProductHandler {
                   p.setDate(new Date());
                 }
 
-                if (p.getClient().getTcPersonal()==true || p.getClient().getTcEmpresarial()==true){
+                if (p.getClient().getTcPersonal() || p.getClient().getTcEmpresarial()){
                   try {
                     throw new Exception("Max TC number reached!");
                   } catch (Exception e) {

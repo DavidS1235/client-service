@@ -1,6 +1,7 @@
 package com.ds.clientservice.document;
 
 import java.util.Date;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,5 +16,6 @@ public class SubTypeProduct {
     private Number limitDay;
     private Number limitCredit;
     private Boolean commission;
+    @NotNull
     private TypeProduct typeProduct;
 }
