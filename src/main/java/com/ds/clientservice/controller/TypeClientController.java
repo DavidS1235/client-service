@@ -3,6 +3,7 @@ package com.ds.clientservice.controller;
 import com.ds.clientservice.business.service.TypeClientService;
 import com.ds.clientservice.document.TypeClient;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +16,13 @@ import reactor.core.publisher.Mono;
 public class TypeClientController {
     @Autowired
     private TypeClientService service;
-  @CircuitBreaker(name = "client")
+  @TimeLimiter(name = "client")
     @GetMapping("")
     public Mono<ResponseEntity<Flux<TypeClient>>> findAll(){
         return Mono.just(ResponseEntity.ok()
                 .body(service.findAll()));
     }
-  @CircuitBreaker(name = "client")
+  @TimeLimiter(name = "client")
     @GetMapping("/{id}")
     public Mono<ResponseEntity<TypeClient>> findById(@PathVariable String id) {
         return service.find(id)
@@ -29,7 +30,7 @@ public class TypeClientController {
                         .body(p))
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
-  @CircuitBreaker(name = "client")
+  @TimeLimiter(name = "client")
     @PostMapping("")
     public Mono<ResponseEntity<TypeClient>> create(@RequestBody TypeClient tc) {
         return service.save(tc)
@@ -37,7 +38,8 @@ public class TypeClientController {
                         .body(t)
                 );
     }
-  @CircuitBreaker(name = "client")
+
+  @TimeLimiter(name = "client")
     @PutMapping("/{id}")
     public Mono<ResponseEntity<TypeClient>> update(@RequestBody TypeClient tc, @PathVariable String id){
         return service.find(id)
@@ -51,7 +53,7 @@ public class TypeClientController {
                 )
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
-  @CircuitBreaker(name = "client")
+  @TimeLimiter(name = "client")
     @DeleteMapping("/{id}")
     public Mono<ResponseEntity<Object>> delete(@PathVariable String id) {
         return service.find(id)
