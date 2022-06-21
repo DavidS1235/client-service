@@ -12,18 +12,18 @@ import reactor.core.publisher.Flux;
 @Service
 public class TypeProductImpl implements TypeProductService {
 
-    @Autowired
-    @Qualifier("TypeProduct")
-    private WebClient webClient;
+  @Autowired
+  @Qualifier("TypeProduct")
+  private WebClient webClient;
 
-    @Override
-    public Flux<TypeProduct> findAll() {
-        return webClient.get()
-                .accept(MediaType.APPLICATION_JSON)
-                // se envía el request
-                .exchange()
-                // se recibe el Flux<Producto>
-                .flatMapMany( response -> response.bodyToFlux(TypeProduct.class))
-                ;
-    }
+  @Override
+  public Flux<TypeProduct> findAll() {
+    return webClient.get()
+            .accept(MediaType.APPLICATION_JSON)
+            // se envía el request
+            .exchange()
+            // se recibe el Flux<Producto>
+            .flatMapMany(response -> response.bodyToFlux(TypeProduct.class))
+            ;
+  }
 }

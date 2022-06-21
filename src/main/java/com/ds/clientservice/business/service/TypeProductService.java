@@ -5,6 +5,6 @@ import reactor.core.publisher.Flux;
 
 public interface TypeProductService {
 
-    public Flux<TypeProduct> findAll();
+  public Flux<TypeProduct> findAll();
 
 }

@@ -9,12 +9,12 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 public class ClientServiceApplication implements CommandLineRunner {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ClientServiceApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(ClientServiceApplication.class, args);
+  }
 
-	@Override
-	public void run(String... args) throws Exception {
+  @Override
+  public void run(String... args) throws Exception {
 
-	}
+  }
 }

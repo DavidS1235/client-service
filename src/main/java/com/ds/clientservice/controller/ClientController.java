@@ -15,76 +15,79 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/client")
 public class ClientController {
 
-    @Autowired
-    private ClientService service;
-
-    @CircuitBreaker(name = "client")
-    @GetMapping("")
-    public Mono<ResponseEntity<Flux<Client>>> findAll(){
-        return Mono.just(ResponseEntity.ok()
-                .body(service.findAll()));
-    }
-    @CircuitBreaker(name = "client")
-    @GetMapping("/{id}")
-    public Mono<ResponseEntity<Client>> findById(@PathVariable String id) {
-        return service.find(id)
-                .map(c -> ResponseEntity.ok()
-                        .body(c))
-                .defaultIfEmpty(ResponseEntity.notFound().build());
-    }
+  @Autowired
+  private ClientService service;
 
   @CircuitBreaker(name = "client")
-    @PostMapping("")
-    public Mono<ResponseEntity<Client>> create(@RequestBody Client c) {
-        return service.save(c)
-                .flatMap(cl -> {
-                  cl.setCtaAhorro(false);
-                  cl.setPlzFijo(false);
-                  cl.setCredPersonal(false);
-                  cl.setCtaCorriente(0);
-                  cl.setCredEmpresarial(0);
-                  cl.setTcPersonal(false);
-                  cl.setTcEmpresarial(false);
-                  return service.save(cl);
-                })
-                .map(cl -> ResponseEntity.created(URI.create("/api/client/".concat(cl.getId())))
-                        .body(cl)
-                )
-                .defaultIfEmpty(ResponseEntity.notFound().build());
-    }
+  @GetMapping("")
+  public Mono<ResponseEntity<Flux<Client>>> findAll() {
+    return Mono.just(ResponseEntity.ok()
+            .body(service.findAll()));
+  }
+
   @CircuitBreaker(name = "client")
-    @PutMapping("/{id}")
-    public Mono<ResponseEntity<Client>> update(@RequestBody Client c, @PathVariable String id){
-        return service.find(id)
-                .flatMap(cl -> {
-                    cl.setCode(c.getCode());
-                    cl.setIdPerson(c.getIdPerson());
-                    cl.setName(c.getName());
-                    cl.setPerson(c.getPerson());
-                    cl.setTypeClient(c.getTypeClient());
-                    cl.setCtaAhorro(c.getCtaAhorro());
-                    cl.setPlzFijo(c.getPlzFijo());
-                    cl.setCredPersonal(c.getCredPersonal());
-                    cl.setCtaCorriente(c.getCtaCorriente());
-                    cl.setCredEmpresarial(c.getCredEmpresarial());
-                    cl.setTcPersonal(c.getTcPersonal());
-                    cl.setTcEmpresarial(c.getTcEmpresarial());
-                    return service.save(cl);
-                })
-                .map(cl -> ResponseEntity.created(URI.create("/api/client/".concat(cl.getId())))
-                        .body(cl)
-                )
-                .defaultIfEmpty(ResponseEntity.notFound().build());
-    }
+  @GetMapping("/{id}")
+  public Mono<ResponseEntity<Client>> findById(@PathVariable String id) {
+    return service.find(id)
+            .map(c -> ResponseEntity.ok()
+                    .body(c))
+            .defaultIfEmpty(ResponseEntity.notFound().build());
+  }
+
   @CircuitBreaker(name = "client")
-    @DeleteMapping("/{id}")
-    public Mono<ResponseEntity<Object>> delete(@PathVariable String id) {
-        return service.find(id)
-                .flatMap(c -> {
-                    return service.Delete(c)
-                            .then(Mono.just(ResponseEntity.noContent().build()));
-                })
-                .defaultIfEmpty(ResponseEntity.notFound().build());
-    }
+  @PostMapping("")
+  public Mono<ResponseEntity<Client>> create(@RequestBody Client c) {
+    return service.save(c)
+            .flatMap(cl -> {
+              cl.setCtaAhorro(false);
+              cl.setPlzFijo(false);
+              cl.setCredPersonal(false);
+              cl.setCtaCorriente(0);
+              cl.setCredEmpresarial(0);
+              cl.setTcPersonal(false);
+              cl.setTcEmpresarial(false);
+              return service.save(cl);
+            })
+            .map(cl -> ResponseEntity.created(URI.create("/api/client/".concat(cl.getId())))
+                    .body(cl)
+            )
+            .defaultIfEmpty(ResponseEntity.notFound().build());
+  }
+
+  @CircuitBreaker(name = "client")
+  @PutMapping("/{id}")
+  public Mono<ResponseEntity<Client>> update(@RequestBody Client c, @PathVariable String id) {
+    return service.find(id)
+            .flatMap(cl -> {
+              cl.setCode(c.getCode());
+              cl.setIdPerson(c.getIdPerson());
+              cl.setName(c.getName());
+              cl.setPerson(c.getPerson());
+              cl.setTypeClient(c.getTypeClient());
+              cl.setCtaAhorro(c.getCtaAhorro());
+              cl.setPlzFijo(c.getPlzFijo());
+              cl.setCredPersonal(c.getCredPersonal());
+              cl.setCtaCorriente(c.getCtaCorriente());
+              cl.setCredEmpresarial(c.getCredEmpresarial());
+              cl.setTcPersonal(c.getTcPersonal());
+              cl.setTcEmpresarial(c.getTcEmpresarial());
+              return service.save(cl);
+            })
+            .map(cl -> ResponseEntity.created(URI.create("/api/client/".concat(cl.getId())))
+                    .body(cl)
+            )
+            .defaultIfEmpty(ResponseEntity.notFound().build());
+  }
+
+  @CircuitBreaker(name = "client")
+  @DeleteMapping("/{id}")
+  public Mono<ResponseEntity<Object>> delete(@PathVariable String id) {
+    return service.find(id)
+            .flatMap(c -> {
+              return service.Delete(c)
+                      .then(Mono.just(ResponseEntity.noContent().build()));
+            })
+            .defaultIfEmpty(ResponseEntity.notFound().build());
+  }
 
 }

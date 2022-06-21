@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "TYPE_PRODUCT")
 public class TypeProduct {
 
-    private String id;
-    private String code;
-    private String name;
+  private String id;
+  private String code;
+  private String name;
 
 }

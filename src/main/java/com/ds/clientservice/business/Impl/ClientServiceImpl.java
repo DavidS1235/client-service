@@ -10,27 +10,27 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class ClientServiceImpl implements ClientService {
-    @Autowired
-    private ClientRepository repository;
+  @Autowired
+  private ClientRepository repository;
 
-    @Override
-    public Mono<Client> save(Client c) {
-        return repository.save(c);
-    }
+  @Override
+  public Mono<Client> save(Client c) {
+    return repository.save(c);
+  }
 
-    @Override
-    public Flux<Client> findAll() {
-        return repository.findAll();
-    }
+  @Override
+  public Flux<Client> findAll() {
+    return repository.findAll();
+  }
 
-    @Override
-    public Mono<Client> find(String id) {
-        return repository.findById(id);
-    }
+  @Override
+  public Mono<Client> find(String id) {
+    return repository.findById(id);
+  }
 
-    @Override
-    public Mono<Void> Delete(Client c) {
-        return repository.delete(c);
-    }
+  @Override
+  public Mono<Void> Delete(Client c) {
+    return repository.delete(c);
+  }
 
 }

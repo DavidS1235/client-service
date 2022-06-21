@@ -12,11 +12,11 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class RouterConfigTypeProduct {
 
 
-@Bean
-public RouterFunction<ServerResponse> routes2(TypeProductHandler handler) {
+  @Bean
+  public RouterFunction<ServerResponse> routes2(TypeProductHandler handler) {
     return RouterFunctions
             .route(GET("/api/TypeProduct"), handler::list);
-    }
+  }
 
 
 }

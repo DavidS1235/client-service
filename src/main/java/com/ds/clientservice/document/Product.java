@@ -10,14 +10,14 @@ import lombok.Setter;
 @Setter
 public class Product {
 
-    private String id;
-    @NotNull
-    private String idBank;
-    @NotEmpty
-    private String tpeCrrency;
-    private Number numRemainder;
-    private Date date;
-    private SubTypeProduct subTypeProduct;
-    private Client client;
+  private String id;
+  @NotNull
+  private String idBank;
+  @NotEmpty
+  private String tpeCrrency;
+  private Number numRemainder;
+  private Date date;
+  private SubTypeProduct subTypeProduct;
+  private Client client;
 
 }

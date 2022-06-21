@@ -8,9 +8,9 @@
         </layout>
     </appender>
 
-<!--    <logger name="ClientServiceApplication">-->
-<!--        <appender-ref ref="CONSOLE"/>-->
-<!--    </logger>-->
+    <!--    <logger name="ClientServiceApplication">-->
+    <!--        <appender-ref ref="CONSOLE"/>-->
+    <!--    </logger>-->
 
     <root name="ClientServiceApplication">
         <appender-ref ref="CONSOLE"/>

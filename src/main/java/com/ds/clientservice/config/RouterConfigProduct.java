@@ -12,8 +12,8 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class RouterConfigProduct {
 
 
-@Bean
-public RouterFunction<ServerResponse> routes(ProductHandler handler) {
+  @Bean
+  public RouterFunction<ServerResponse> routes(ProductHandler handler) {
     return RouterFunctions
             .route(GET("/api/product"), handler::list)
             .andRoute(GET("/api/product/{id}"), handler::find)
@@ -25,7 +25,7 @@ public RouterFunction<ServerResponse> routes(ProductHandler handler) {
 //            .andRoute(POST("/api/product/tc"), handler::createTC)
             .andRoute(PUT("/api/product/{id}"), handler::update)
             .andRoute(DELETE("/api/product/{id}"), handler::delete);
-    }
+  }
 
 
 }

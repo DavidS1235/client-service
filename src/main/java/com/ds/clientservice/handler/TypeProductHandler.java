@@ -12,13 +12,13 @@ import reactor.core.publisher.Mono;
 @Component
 public class TypeProductHandler {
 
-    @Autowired
-    private TypeProductService service;
+  @Autowired
+  private TypeProductService service;
 
-    public Mono<ServerResponse> list(ServerRequest request) {
-        return ServerResponse
-                .ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(service.findAll(), TypeProduct.class);
-    }
+  public Mono<ServerResponse> list(ServerRequest request) {
+    return ServerResponse
+            .ok()
+            .contentType(MediaType.APPLICATION_JSON)
+            .body(service.findAll(), TypeProduct.class);
+  }
 }

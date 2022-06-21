@@ -10,26 +10,26 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class PersonServiceImpl implements PersonService {
-    @Autowired
-    private PersonRespository repository;
+  @Autowired
+  private PersonRespository repository;
 
-    @Override
-    public Mono<Person> save(Person p) {
-        return repository.save(p);
-    }
+  @Override
+  public Mono<Person> save(Person p) {
+    return repository.save(p);
+  }
 
-    @Override
-    public Flux<Person> findAll() {
-        return repository.findAll();
-    }
+  @Override
+  public Flux<Person> findAll() {
+    return repository.findAll();
+  }
 
-    @Override
-    public Mono<Person> find(String id) {
-        return repository.findById(id);
-    }
+  @Override
+  public Mono<Person> find(String id) {
+    return repository.findById(id);
+  }
 
-    @Override
-    public Mono<Void> Delete(Person p) {
-        return repository.delete(p);
-    }
+  @Override
+  public Mono<Void> Delete(Person p) {
+    return repository.delete(p);
+  }
 }

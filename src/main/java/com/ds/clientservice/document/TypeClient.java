@@ -12,9 +12,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "TYPE_CLIENT")
 public class TypeClient {
 
-    @Id
-    private String id;
-    private String code;
-    private String name;
+  @Id
+  private String id;
+  private String code;
+  private String name;
 
 }

@@ -6,11 +6,11 @@ import reactor.core.publisher.Mono;
 
 public interface TypeClientService {
 
-    public Mono<TypeClient> save(TypeClient tc);
+  public Mono<TypeClient> save(TypeClient tc);
 
-    public Flux<TypeClient> findAll();
+  public Flux<TypeClient> findAll();
 
-    public Mono<TypeClient> find(String id);
+  public Mono<TypeClient> find(String id);
 
-    public Mono<Void> Delete(TypeClient tc);
+  public Mono<Void> Delete(TypeClient tc);
 }

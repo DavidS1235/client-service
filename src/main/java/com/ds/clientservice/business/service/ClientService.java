@@ -6,11 +6,11 @@ import reactor.core.publisher.Mono;
 
 public interface ClientService {
 
-    public Mono<Client> save(Client c);
+  public Mono<Client> save(Client c);
 
-    public Flux<Client> findAll();
+  public Flux<Client> findAll();
 
-    public Mono<Client> find(String id);
+  public Mono<Client> find(String id);
 
-    public Mono<Void> Delete(Client c);
+  public Mono<Void> Delete(Client c);
 }
