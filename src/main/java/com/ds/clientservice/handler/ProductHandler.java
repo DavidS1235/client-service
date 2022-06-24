@@ -66,6 +66,14 @@ public class ProductHandler {
                 if (p.getDate() == null) {
                   p.setDate(new Date());
                 }
+                if (p.getClient().getDeudor() == true) {
+                  log.error("Not allowed!");
+                  try {
+                    throw new Exception("Not allowed!");
+                  } catch (Exception e) {
+                    throw new RuntimeException(e);
+                  }
+                }
                 if (p.getClient().getTypeClient().getName().equals(tp2)) {
                   log.error("Invalid client type");
                   try {
@@ -114,6 +122,14 @@ public class ProductHandler {
                 if (p.getDate() == null) {
                   p.setDate(new Date());
                 }
+                if (p.getClient().getDeudor() == true) {
+                  log.error("Not allowed!");
+                  try {
+                    throw new Exception("Not allowed!");
+                  } catch (Exception e) {
+                    throw new RuntimeException(e);
+                  }
+                }
                 if (p.getClient().getTypeClient().getName().equals(tp1)) {
                   if (p.getClient().getCtaCorriente() == 1) {
                     log.error("Max account number reached!");
@@ -155,6 +171,14 @@ public class ProductHandler {
               } else {
                 if (p.getDate() == null) {
                   p.setDate(new Date());
+                }
+                if (p.getClient().getDeudor() == true) {
+                  log.error("Not allowed!");
+                  try {
+                    throw new Exception("Not allowed!");
+                  } catch (Exception e) {
+                    throw new RuntimeException(e);
+                  }
                 }
                 if (p.getClient().getTypeClient().getName().equals(tp2)) {
                   log.error("Invalid client type");
@@ -206,6 +230,14 @@ public class ProductHandler {
                 if (p.getDate() == null) {
                   p.setDate(new Date());
                 }
+                if (p.getClient().getDeudor() == true) {
+                  log.error("Not allowed!");
+                  try {
+                    throw new Exception("Not allowed!");
+                  } catch (Exception e) {
+                    throw new RuntimeException(e);
+                  }
+                }
                 if (p.getClient().getTypeClient().getName().equals(tp2)) {
                   log.error("Invalid client type");
                   try {
@@ -256,6 +288,14 @@ public class ProductHandler {
                 if (p.getDate() == null) {
                   p.setDate(new Date());
                 }
+                if (p.getClient().getDeudor() == true) {
+                  log.error("Not allowed!");
+                  try {
+                    throw new Exception("Not allowed!");
+                  } catch (Exception e) {
+                    throw new RuntimeException(e);
+                  }
+                }
                 if (p.getClient().getTypeClient().getName().equals(tp1)) {
                   log.error("Invalid client type");
                   try {
@@ -297,6 +337,14 @@ public class ProductHandler {
               } else {
                 if (p.getDate() == null) {
                   p.setDate(new Date());
+                }
+                if (p.getClient().getDeudor() == true) {
+                  log.error("Not allowed!");
+                  try {
+                    throw new Exception("Not allowed!");
+                  } catch (Exception e) {
+                    throw new RuntimeException(e);
+                  }
                 }
 
                 if (p.getClient().getTcPersonal() || p.getClient().getTcEmpresarial()) {
