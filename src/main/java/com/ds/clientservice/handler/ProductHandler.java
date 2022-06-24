@@ -371,6 +371,57 @@ public class ProductHandler {
             });
   }
 
+  public Mono<ServerResponse> createDebitCard(ServerRequest request) {
+    Mono<Product> product = request.bodyToMono(Product.class);
+
+    return product
+            .flatMap(p -> {
+              Errors errors = new BeanPropertyBindingResult(p, Product.class.getName());
+              validator.validate(p, errors);
+
+              if (errors.hasErrors()) {
+                return Flux.fromIterable(errors.getFieldErrors())
+                        .map(fieldError -> "Field " + fieldError.getField() + " " + fieldError.getDefaultMessage())
+                        .collectList()
+                        .flatMap(list -> ServerResponse.badRequest().body(BodyInserters.fromObject(list)));
+
+              } else {
+                if (p.getDate() == null) {
+                  p.setDate(new Date());
+                }
+                if (p.getClient().getDeudor() == true) {
+                  log.error("Not allowed!");
+                  try {
+                    throw new Exception("Not allowed!");
+                  } catch (Exception e) {
+                    throw new RuntimeException(e);
+                  }
+                }
+
+                if (p.getClient().getTcPersonal() || p.getClient().getTcEmpresarial()) {
+                  try {
+                    throw new Exception("Max TC number reached!");
+                  } catch (Exception e) {
+                    throw new RuntimeException(e);
+                  }
+
+                }
+                if (p.getClient().getTypeClient().getName().equals(tp1)) {
+                  p.getClient().setTcPersonal(true);
+                } else
+                  p.getClient().setTcEmpresarial(true);
+                return service.saveProduct(p)
+                        .flatMap(pr -> ServerResponse
+                                .created(URI.create("/api/product/".concat(pr.getId())))
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .syncBody(pr)
+
+                        );
+              }
+
+            });
+  }
+
   public Mono<ServerResponse> update(ServerRequest request) {
 
     Mono<Product> p = request.bodyToMono(Product.class);
