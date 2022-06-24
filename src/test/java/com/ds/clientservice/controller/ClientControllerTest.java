@@ -4,6 +4,7 @@ import com.ds.clientservice.business.service.ClientService;
 import com.ds.clientservice.document.Client;
 import com.ds.clientservice.document.Person;
 import com.ds.clientservice.document.TypeClient;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
@@ -28,6 +29,8 @@ public class ClientControllerTest {
   @MockBean
   ClientService clientService;
 
+  Client client;
+
 //  @Mock
 //  private ClientService clientService;
 //
@@ -49,6 +52,11 @@ public class ClientControllerTest {
 //    clients.add(new Client("ID0002","C0002", "P0002", "Maria", new Person(), new TypeClient(), false, false, false, 0 , 0 , false, false));
 //
 //  }
+
+  @BeforeEach
+  void before(){
+    client = new Client("C0001","CC0001", "P0001", "Juan Solis", new Person(), new TypeClient(), false, false, false, 0, 0, false, false);
+  }
 
   @Test
   public void testFindAllClients() {
