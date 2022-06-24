@@ -1,5 +1,6 @@
 package com.ds.clientservice.document;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Document(collection = "CLIENT")
 public class Client {
 
@@ -28,5 +30,6 @@ public class Client {
   private Integer credEmpresarial; // E: n
   private Boolean tcPersonal;
   private Boolean tcEmpresarial;
+  private Boolean deudor;
 
 }
