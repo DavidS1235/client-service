@@ -55,7 +55,7 @@ public class ClientControllerTest {
 
   @BeforeEach
   void before(){
-    client = new Client("C0001","CC0001", "P0001", "Juan Solis", new Person(), new TypeClient(), false, false, false, 0, 0, false, false);
+    client = new Client("C0001","CC0001", "P0001", "Juan Solis", new Person(), new TypeClient(), false, false, false, 0, 0, false, false, false);
   }
 
   @Test
@@ -71,7 +71,7 @@ public class ClientControllerTest {
 
     StepVerifier.create(responseBody)
             .expectSubscription()
-            .expectNext(new Client("C0001","CC0001", "P0001", "Juan Solis", new Person(), new TypeClient(), false, false, false, 0, 0, false, false))
+            .expectNext(new Client("C0001","CC0001", "P0001", "Juan Solis", new Person(), new TypeClient(), false, false, false, 0, 0, false, false, false))
             .verifyComplete();
   }
 
